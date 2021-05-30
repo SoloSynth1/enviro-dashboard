@@ -10,12 +10,14 @@ class Config:
     SCHEDULER_API_ENABLED = True
 
 
-# initialize scheduler
-scheduler = APScheduler()
-
 # create app
 app = Flask(__name__)
 app.config.from_object(Config())
+
+# initialize scheduler
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
 
 
 # cron examples
@@ -37,6 +39,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    scheduler.init_app(app)
-    scheduler.start()
+    app.run()
 
