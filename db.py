@@ -17,7 +17,7 @@ def table_exists(table_name):
 
 def create_table(table_name):
     with connect() as conn:
-        conn.execute("create table temperature (timestamp integer primary key, value real)".format(table_name))
+        conn.execute("create table {} (timestamp integer primary key, value real)".format(table_name))
 
 
 def insert_record(table_name, value: [int, float]):
